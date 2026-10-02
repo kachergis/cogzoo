@@ -22,7 +22,7 @@ models doesn't mean learning a new calling convention for each one.
 
 ```r
 # install.packages("remotes")
-remotes::install_github("gkacherg/cogzoo")
+remotes::install_github("kachergis/cogzoo")
 ```
 
 ## The interface

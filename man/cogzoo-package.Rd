@@ -16,8 +16,8 @@ to add a new model or dataset.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/gkacherg/cogzoo}
-  \item Report bugs at \url{https://github.com/gkacherg/cogzoo/issues}
+  \item \url{https://github.com/kachergis/cogzoo}
+  \item Report bugs at \url{https://github.com/kachergis/cogzoo/issues}
 }
 
 }
