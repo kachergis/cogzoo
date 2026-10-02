@@ -11,12 +11,42 @@ Existing collections of cognitive models tend to be one-off scripts
 scattered across a researcher's homepage or a defunct institutional
 repository — the [Ohio State cognitive modeling
 repository](http://www.cmr.osu.edu/) that partly motivated this package is
-one such example, as is the loose collection of per-model folders in
-[crsh/cognitive_models](https://github.com/crsh/cognitive_models) that most
-of `cogzoo`'s initial models were migrated from. `cogzoo` aims to keep
-implementations, the data they're fit to, and tests that they still work,
-in one versioned, citable place, with a consistent interface so comparing
-models doesn't mean learning a new calling convention for each one.
+one such example (the site is no longer maintained and several of its
+dataset/model links are dead), as is the loose collection of per-model
+folders in [crsh/cognitive_models](https://github.com/crsh/cognitive_models)
+that most of `cogzoo`'s initial models were migrated from. `cogzoo` aims to
+keep implementations, the data they're fit to, and tests that they still
+work, in one versioned, citable place, with a consistent interface so
+comparing models doesn't mean learning a new calling convention for each
+one.
+
+## Related work
+
+- **[cognitivemodels](https://github.com/JanaJarecki/cognitivemodels)**
+  (Jarecki & Seitz) is the closest prior art in spirit — an `lm()`-style
+  formula interface over a common cognitive-model superclass, with a
+  published ICCM paper behind it. It's now effectively dormant (last commit
+  Dec 2022, 37 open issues, never reached CRAN, and depends on a second
+  GitHub-only package that's been untouched since 2020), has a much heavier
+  dependency footprint (requires a C++ toolchain plus `ROI`/`Rsolnp`/
+  `quadprog`/`arrangements`), and its domain emphasis is risk/preference
+  economics (shortfall theory, foraging, cumulative prospect theory) rather
+  than the memory/categorization/learning core `cogzoo` started from. The
+  only direct model overlap is GCM. Not a dependency candidate, but worth
+  knowing about.
+- **[cogmod](https://cran.r-project.org/package=cogmod)** (Makowski) is
+  distinct by design, not a competitor: it's a `brms` extension providing
+  custom response-distribution families (DDM, LBA, racing diffusion,
+  lognormal race, ex-Gaussian, ordered-beta rating models) for hierarchical
+  *Bayesian regression* with `brms`'s formula syntax, rather than a
+  standalone model object with its own `cm_fit()`. It's under very active
+  development (CRAN release 2026-09-25) by a maintainer with a strong track
+  record (the easystats ecosystem). `ddm()`/`lba()` and `cogmod` solve
+  different problems — ad hoc parameter estimation vs. multilevel Bayesian
+  fits with per-subject random effects — but it's a natural pointer for
+  anyone who outgrows `cogzoo`'s default optimizer-based fitting for those
+  two models, and a candidate source of battle-tested densities if
+  `RWiener`/`rtdists` ever need replacing.
 
 ## Installation
 
