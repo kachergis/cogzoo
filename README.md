@@ -22,6 +22,22 @@ one.
 
 ## Related work
 
+- **[catlearn](https://catlearn.r-forge.r-project.org/)** (Wills, Dome,
+  Edmunds, et al.) is the closest match in both spirit and current health:
+  an actively maintained CRAN package (v1.1, 2025-03-31; GitHub pushed as
+  recently as September 2026) built on the explicit "Open Models" philosophy
+  — formal models plus independently-replicated benchmark datasets plus a
+  simulation archive — that `cogzoo` is also pursuing. It covers
+  categorization and learning specifically: ALCOVE, COVIS, DIVA, EXIT,
+  Gluck & Bower (1988), Mackintosh (1975), and SUSTAIN, among others —
+  several of which were on `cogzoo`'s own "harder ones, later" list. Its
+  interface is a flat set of exported functions per model (`slpALCOVE()`,
+  `slpSUSTAIN()`, etc., "slp" = sequential learning process) rather than a
+  shared object/generic interface, and it leans on `Rcpp`/`RcppArmadillo`
+  for performance. Practical implication: `cogzoo` should wrap `catlearn`'s
+  validated implementations as the backend for its own `alcove()`/
+  `sustain()` (the way `ddm()`/`lba()` already wrap `RWiener`/`rtdists`)
+  rather than reimplementing them from scratch.
 - **[cognitivemodels](https://github.com/JanaJarecki/cognitivemodels)**
   (Jarecki & Seitz) is the closest prior art in spirit — an `lm()`-style
   formula interface over a common cognitive-model superclass, with a
