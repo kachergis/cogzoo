@@ -1,0 +1,28 @@
+id: "lewandowsky2011_shj_workingmemory"
+title: "Lewandowsky (2011): participant-level working-memory battery scores (companion to lewandowsky2011_shj)"
+citation: "Lewandowsky, S. (2011). Working memory capacity and categorization: Individual differences and modeling. Journal of Experimental Psychology: Learning, Memory and Cognition, 37(3), 720-738. https://doi.org/10.1037/a0022639"
+license: "Redistributed via ajwills72/sixproblems (github.com/ajwills72/sixproblems), which states no explicit license; data were requested from and provided by Lewandowsky to Andy Wills, who verified they reproduce Table 1 of the source paper. Contact the sixproblems maintainer and/or Lewandowsky before further redistribution."
+domain: categorization
+task_type: working-memory-battery
+columns:
+  - name: subID
+    type: integer
+    description: Unique subject ID; joins to the subj column of lewandowsky2011_shj
+  - name: WMUMean
+    type: double
+    description: Working Memory Updating task score
+  - name: OSMean
+    type: double
+    description: Operation Span task score
+  - name: CJOSMean
+    type: double
+    description: Operation Span processing (judgment) task score
+  - name: SSMean
+    type: double
+    description: Sentence Span score
+  - name: SSCJMean
+    type: double
+    description: Sentence Span processing (judgment) task score
+  - name: SSTMScore
+    type: double
+    description: Spatial short-term memory task score

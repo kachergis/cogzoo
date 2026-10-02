@@ -1,0 +1,19 @@
+id: "kurtz2013_shj"
+title: "Kurtz, Levering, Stanton, Romero, & Morris (2013, Exp. 2): Type II vs. Type IV block-level accuracy"
+citation: "Kurtz, K. J., Levering, K. R., Stanton, R. D., Romero, J., & Morris, S. N. (2013). Human learning of elemental category structures: Revising the classic result of Shepard, Hovland, and Jenkins (1961). Journal of Experimental Psychology: Learning, Memory, and Cognition, 39(2), 552-572. https://doi.org/10.1037/a0029178"
+license: "Redistributed via ajwills72/sixproblems (github.com/ajwills72/sixproblems), which states no explicit license; data were requested from and provided by the original authors (Kurtz) to Andy Wills, who verified they reproduce Figure 3 of the source paper. Contact the sixproblems maintainer and/or Kurtz et al. before further redistribution."
+domain: categorization
+task_type: category-learning
+columns:
+  - name: type
+    type: integer
+    description: Shepard, Hovland, & Jenkins (1961) problem type being learned (2 or 4 in this experiment)
+  - name: subj
+    type: integer
+    description: Unique subject ID
+  - name: block
+    type: integer
+    description: Training block number (1-8; 8 trials per block)
+  - name: acc
+    type: double
+    description: Proportion correct within that block (0-1). Participants were trained to criterion (two error-free consecutive blocks); post-criterion blocks are imputed as error-free to allow reproducing the original paper's analyses over the full 8 blocks.

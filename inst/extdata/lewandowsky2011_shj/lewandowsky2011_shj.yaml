@@ -1,0 +1,52 @@
+id: "lewandowsky2011_shj"
+title: "Lewandowsky (2011): trial-level replication of all six Shepard, Hovland, & Jenkins (1961) problem types"
+citation: "Lewandowsky, S. (2011). Working memory capacity and categorization: Individual differences and modeling. Journal of Experimental Psychology: Learning, Memory and Cognition, 37(3), 720-738. https://doi.org/10.1037/a0022639"
+license: "Redistributed via ajwills72/sixproblems (github.com/ajwills72/sixproblems), which states no explicit license; data were requested from and provided by Lewandowsky to Andy Wills, who verified they reproduce Figure 2 of the source paper. Contact the sixproblems maintainer and/or Lewandowsky before further redistribution."
+domain: categorization
+task_type: category-learning
+columns:
+  - name: subj
+    type: integer
+    description: Unique subject ID (each of 113 participants completed all six problem types)
+  - name: session
+    type: integer
+    description: Session number (1-2); session 1 also included the working-memory battery in lewandowsky2011_shj_workingmemory, joinable by subj
+  - name: phase
+    type: integer
+    description: Problem number within session (1-3)
+  - name: type
+    type: integer
+    description: Shepard, Hovland, & Jenkins (1961) problem type (1-6)
+  - name: block
+    type: integer
+    description: Training block number (1-12; 16 trials per block)
+  - name: trial
+    type: integer
+    description: Trial number within block (1-16)
+  - name: trialid
+    type: integer
+    description: Logical stimulus number (1-8), numbered as in Lewandowsky (2011, Figure 1G)
+  - name: correct
+    type: integer
+    description: 1 if the response was correct, 0 if not
+  - name: RT
+    type: double
+    description: "Response time in seconds. NA on imputed post-criterion trials (participants were trained to a two-error-free-block criterion; post-criterion trials are imputed as error-free to allow reproducing analyses over the full 12 blocks, and can be excluded by filtering on RT being NA)"
+  - name: dim1
+    type: character
+    description: Physical dimension (shape, color, or size) mapped to logical dimension 1 for this participant/counterbalance
+  - name: dim2
+    type: character
+    description: Physical dimension mapped to logical dimension 2
+  - name: dim3
+    type: character
+    description: Physical dimension mapped to logical dimension 3
+  - name: logstim
+    type: character
+    description: Three-digit logical stimulus code (dimensions 1-2-3), invariant across counterbalance conditions
+  - name: logcat
+    type: integer
+    description: Logical category membership (0/1) of the presented stimulus, invariant across counterbalance conditions
+  - name: resp
+    type: integer
+    description: "Response key pressed, recoded to 0/1 (\"Z\" = 0, \"/\" = 1)"

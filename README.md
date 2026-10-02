@@ -118,6 +118,23 @@ Bundled under `inst/extdata/<id>/`, each `.csv` paired with a `.yaml`
 metadata sidecar (citation, license, task type, column dictionary) checked
 by `validate_cogdata()`.
 
+- `nosofsky_1989` — categorization responses (Nosofsky, 1989).
+- `kurtz2013_shj`, `lewandowsky2011_shj` (+ its `..._workingmemory`
+  companion), `nosofsky1994_shj`, `rehder2005_shj` — four independent
+  trial/block-level replications of Shepard, Hovland, & Jenkins' (1961) six
+  category-learning problem types, via
+  [ajwills72/sixproblems](https://github.com/ajwills72/sixproblems). This
+  is the standard benchmark for comparing categorization models on learning
+  *difficulty* (the classic Type I < II < III,IV,V < VI ordering), so it
+  pairs naturally with `gcm()`/`prototype()` now and with `alcove()`/
+  `sustain()` once those land.
+
+None of these datasets carry an explicit license from their original
+source; each sidecar documents exactly how the data was obtained (who
+requested it from the original authors, what published figure/statistic
+was used to verify it) and says to check with the current maintainer before
+further redistribution beyond this package.
+
 ## Contributing
 
 See [`CONTRIBUTING.md`](CONTRIBUTING.md) — `add_model()` and `add_dataset()`

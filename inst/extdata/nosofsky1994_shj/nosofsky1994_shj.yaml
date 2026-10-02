@@ -1,0 +1,40 @@
+id: "nosofsky1994_shj"
+title: "Nosofsky, Gluck, Palmeri, McKinley, & Glauthier (1994): trial-level replication of Shepard, Hovland, & Jenkins (1961)"
+citation: "Nosofsky, R. M., Gluck, M. A., Palmeri, T. J., McKinley, S. C., & Glauthier, P. (1994). Comparing models of rule-based classification learning: A replication and extension of Shepard, Hovland, and Jenkins (1961). Memory & Cognition, 22(3), 352-369. https://doi.org/10.3758/BF03200863"
+license: "Redistributed via ajwills72/sixproblems (github.com/ajwills72/sixproblems), which states no explicit license; data were requested from and provided by Palmeri to Andy Wills, who verified they reproduce Table 1 of Nosofsky, Gluck et al. (1994) and Figures 6-8 of Nosofsky, Palmeri, & McKinley (1994). Contact the sixproblems maintainer and/or Nosofsky before further redistribution."
+domain: categorization
+task_type: category-learning
+columns:
+  - name: subj
+    type: integer
+    description: Unique subject ID (each of 120 participants completed two of the six problem types)
+  - name: type
+    type: integer
+    description: Shepard, Hovland, & Jenkins (1961) problem type (1-6)
+  - name: prob
+    type: integer
+    description: Whether this was the subject's first (1) or second (2) problem attempted
+  - name: block
+    type: integer
+    description: Training block number (1-25; 16 trials per block)
+  - name: subblock
+    type: integer
+    description: Sub-block number (1-50; 8 trials per sub-block)
+  - name: trial
+    type: integer
+    description: Trial number within block (1-16)
+  - name: logstim
+    type: integer
+    description: Logical stimulus number (1-8), numbered as in the source paper's Figure 1
+  - name: phystim
+    type: integer
+    description: "Physical stimulus number (1-8; correspondence to the published figure is unknown, but consistent within a subject). NA on imputed post-criterion trials (see `resp`)."
+  - name: resp
+    type: integer
+    description: "Participant's response (0/1, arbitrary key mapping). NA on imputed post-criterion trials: participants were trained to a four-sub-block error-free criterion, and post-criterion trials are imputed as error-free to allow reproducing analyses over the full 25 blocks; filter on resp being NA to exclude them."
+  - name: cat
+    type: integer
+    description: Category membership of the presented item (0/1, arbitrary label mapping). NA on imputed post-criterion trials.
+  - name: error
+    type: integer
+    description: 1 if resp != cat (an error), 0 otherwise; derived column
