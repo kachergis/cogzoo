@@ -1,0 +1,29 @@
+Package: cogzoo
+Title: A Community Zoo of Computational Cognitive Models
+Version: 0.0.0.9000
+Authors@R: person("George", "Kachergis", email = "george.kachergis@gmail.com", role = c("aut", "cre"))
+Description: A curated, community-contributed collection of computational
+    models of cognition (memory, categorization, learning, decision-making,
+    and beyond) sharing a common simulate/fit/predict interface, bundled
+    reference datasets with validated metadata, and reproducibility tests
+    for every model-dataset pairing.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Depends: R (>= 4.1)
+Imports:
+    graphics,
+    stats,
+    utils,
+    yaml
+Suggests:
+    testthat (>= 3.0.0),
+    knitr,
+    rmarkdown,
+    RWiener,
+    rtdists
+Config/testthat/edition: 3
+VignetteBuilder: knitr
+URL: https://github.com/gkacherg/cogzoo
+BugReports: https://github.com/gkacherg/cogzoo/issues
+Config/roxygen2/version: 8.0.0

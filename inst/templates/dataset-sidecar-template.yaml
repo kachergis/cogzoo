@@ -1,0 +1,11 @@
+id: "{{id}}"                     # matches the .csv filename (without extension)
+title: "TODO: short descriptive title"
+citation: "TODO: full citation for the source publication, with DOI if available"
+license: "TODO: e.g. 'CC-BY-4.0', or 'Redistributed with permission of <author>; contact maintainers before further reuse.'"
+domain: "TODO: e.g. categorization, memory, learning, decision-making"
+task_type: "TODO: e.g. binary-classification, free-recall, n-armed-bandit"
+sep: ","                          # delimiter, if not comma
+columns:
+  - name: "TODO"
+    type: "TODO: integer | double | character | factor"
+    description: "TODO"

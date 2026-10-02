@@ -1,0 +1,23 @@
+id: "nosofsky_1989_responses"
+title: "Nosofsky (1989) Experiment 1: category-response frequencies under similarity and identification instructions"
+citation: "Nosofsky, R. M. (1989). Further tests of an exemplar-similarity approach to relating identification and categorization. Perception & Psychophysics, 45(4), 279-290. https://doi.org/10.3758/BF03204942"
+license: "Redistributed with permission of the original author (Robert Nosofsky), retrieved via the Ohio State University cognitive modeling repository; contact maintainers before further reuse."
+domain: categorization
+task_type: binary-classification
+sep: ";"
+columns:
+  - name: Stimulus
+    type: integer
+    description: Stimulus identifier (1-16)
+  - name: Cat-1-s
+    type: integer
+    description: Number of category-1 responses under similarity-scaling instructions
+  - name: Cat-2-s
+    type: integer
+    description: Number of category-2 responses under similarity-scaling instructions
+  - name: Cat-1-a
+    type: integer
+    description: Number of category-1 responses under categorization ("attention") instructions
+  - name: Cat-2-a
+    type: integer
+    description: Number of category-2 responses under categorization ("attention") instructions

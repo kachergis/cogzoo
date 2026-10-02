@@ -1,0 +1,81 @@
+---
+title: "Getting started: fitting a model to a bundled dataset"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started: fitting a model to a bundled dataset}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+```{r setup}
+library(cogzoo)
+```
+
+Every model in the zoo shares the same four generics: `cm_simulate()`,
+`cm_loglik()`, `cm_fit()`, and `cm_predict()`. This walks through all four
+using the Generalized Context Model (`gcm()`, Nosofsky 1986) and its bundled
+example dataset.
+
+## What's available
+
+```{r}
+list_models()[["gcm"]][c("domain", "task_types", "description")]
+```
+
+## Loading a bundled dataset
+
+Datasets ship under `inst/extdata/` with a validated metadata sidecar —
+`read_cogdata()` checks the sidecar before returning the data, so a
+malformed dataset fails loudly instead of silently.
+
+```{r}
+responses <- read_cogdata(system.file(
+  "extdata", "nosofsky_1989", "nosofsky_1989_responses.csv",
+  package = "cogzoo"
+))
+head(responses)
+```
+
+## Constructing and fitting a model
+
+```{r}
+mem <- data.frame(
+  d1 = seq_len(nrow(responses)),
+  d2 = rev(seq_len(nrow(responses))),
+  category = rep(1:2, length.out = nrow(responses))
+)
+fit_data <- data.frame(
+  d1 = mem$d1, d2 = mem$d2,
+  n_cat1 = responses[["Cat-1-s"]],
+  n_total = responses[["Cat-1-s"]] + responses[["Cat-2-s"]]
+)
+
+model <- gcm()
+fitted <- cm_fit(
+  model, fit_data, mem = mem,
+  method = "L-BFGS-B", lower = c(0.01, 0.01, 0.01), upper = c(0.99, 5, 0.99)
+)
+fitted
+```
+
+## Predicting and checking calibration
+
+```{r, fig.alt = "Scatterplot of observed vs. model-predicted category-1 response proportions, points falling roughly along the diagonal."}
+predicted <- cm_predict(fitted, fit_data[c("d1", "d2")], mem = mem)
+observed <- fit_data$n_cat1 / fit_data$n_total
+plot(fitted, observed, predicted)
+```
+
+## Simulating
+
+`cm_simulate()` draws synthetic data from a model — this is also what the
+package's simulate-and-recover tests use to check a model's likelihood is
+implemented correctly (see `CONTRIBUTING.md` for that pattern).
+
+```{r}
+cm_simulate(fitted, fit_data[c("d1", "d2")], mem = mem, n = 50)
+```
