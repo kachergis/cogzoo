@@ -1,0 +1,25 @@
+id: "shin_nosofsky1992_responses"
+title: "Shin & Nosofsky (1992) Experiment 1: old/new recognition response proportions"
+citation: "Shin, H. J., & Nosofsky, R. M. (1992). Similarity-scaling studies of dot-pattern classification and recognition. Journal of Experimental Psychology: General, 121(3), 278-304. https://doi.org/10.1037/0096-3445.121.3.278"
+license: "Original data provided by Robert Nosofsky and retrieved via the Ohio State University cognitive modeling repository (now defunct, http://cmr.osu.edu/); transcribed into .csv by Frederik Aust from Shin & Nosofsky (1992) Table 2/Table A1, then reformatted for cogzoo. Contact the original authors before further redistribution."
+domain: categorization
+task_type: recognition-memory
+columns:
+  - name: category
+    type: integer
+    description: Which of the 3 independent category-learning conditions (1, 2, or 3); joins to shin_nosofsky1992_stimuli on (category, item_index)
+  - name: item_index
+    type: integer
+    description: Position (1-10) within its category; joins to shin_nosofsky1992_stimuli on (category, item_index)
+  - name: exemplar
+    type: character
+    description: Original stimulus label from the source file (not directly comparable to shin_nosofsky1992_stimuli's exemplar labels for old items -- join on category + item_index instead)
+  - name: role
+    type: character
+    description: "Stimulus role, matching shin_nosofsky1992_stimuli: \"prototype\", \"old\", \"new_low\", \"new_medium\", or \"new_high\""
+  - name: observed_p_old
+    type: double
+    description: Observed proportion of "old" (studied) responses to this stimulus, as reported in the source paper
+  - name: reproduction_predicted_p_old
+    type: double
+    description: "NOT from the original paper: this is Frederik Aust's own GCM-recognition-model fit from reproduce_shin_nosofsky_1992.rmd in crsh/cognitive_models, included only as a reference point for anyone re-fitting this data -- do not cite as Shin & Nosofsky's reported value."

@@ -1,0 +1,37 @@
+id: "shin_nosofsky1992_stimuli"
+title: "Shin & Nosofsky (1992) Experiment 1: 6-D MDS stimulus coordinates for dot-pattern recognition"
+citation: "Shin, H. J., & Nosofsky, R. M. (1992). Similarity-scaling studies of dot-pattern classification and recognition. Journal of Experimental Psychology: General, 121(3), 278-304. https://doi.org/10.1037/0096-3445.121.3.278"
+license: "Original data provided by Robert Nosofsky and retrieved via the Ohio State University cognitive modeling repository (now defunct, http://cmr.osu.edu/); transcribed into .csv by Frederik Aust from Shin & Nosofsky (1992) Table 2/Table A1, then reformatted for cogzoo. Contact the original authors before further redistribution."
+domain: categorization
+task_type: recognition-memory
+columns:
+  - name: category
+    type: integer
+    description: Which of the 3 independent category-learning conditions (1, 2, or 3) this stimulus belongs to; each has its own prototype, studied exemplars, and distractors
+  - name: item_index
+    type: integer
+    description: Position (1-10) within its category; joins to shin_nosofsky1992_responses on (category, item_index)
+  - name: exemplar
+    type: character
+    description: Original stimulus label from the source file (prototype Px, old exemplars O1-O6, or new distractors Nl/Nm/Nh)
+  - name: role
+    type: character
+    description: "Stimulus role: \"prototype\" (the category prototype, not studied), \"old\" (one of 6 exemplars actually studied during training), or \"new_low\"/\"new_medium\"/\"new_high\" (unstudied distractors at low/medium/high similarity to the category)"
+  - name: dim1
+    type: double
+    description: Coordinate on MDS dimension 1 of the 6-dimensional psychological similarity space
+  - name: dim2
+    type: double
+    description: Coordinate on MDS dimension 2
+  - name: dim3
+    type: double
+    description: Coordinate on MDS dimension 3
+  - name: dim4
+    type: double
+    description: Coordinate on MDS dimension 4
+  - name: dim5
+    type: double
+    description: Coordinate on MDS dimension 5
+  - name: dim6
+    type: double
+    description: Coordinate on MDS dimension 6

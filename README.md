@@ -119,6 +119,10 @@ metadata sidecar (citation, license, task type, column dictionary) checked
 by `validate_cogdata()`.
 
 - `nosofsky_1989` — categorization responses (Nosofsky, 1989).
+- `shin_nosofsky1992_stimuli` + `shin_nosofsky1992_responses` — 6-D MDS
+  stimulus coordinates and old/new recognition response proportions for
+  three dot-pattern categories (Shin & Nosofsky, 1992); the two tables join
+  on `(category, item_index)`.
 - `kurtz2013_shj`, `lewandowsky2011_shj` (+ its `..._workingmemory`
   companion), `nosofsky1994_shj`, `rehder2005_shj` — four independent
   trial/block-level replications of Shepard, Hovland, & Jenkins' (1961) six
