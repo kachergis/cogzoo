@@ -34,10 +34,10 @@ one.
   interface is a flat set of exported functions per model (`slpALCOVE()`,
   `slpSUSTAIN()`, etc., "slp" = sequential learning process) rather than a
   shared object/generic interface, and it leans on `Rcpp`/`RcppArmadillo`
-  for performance. Practical implication: `cogzoo` should wrap `catlearn`'s
-  validated implementations as the backend for its own `alcove()`/
-  `sustain()` (the way `ddm()`/`lba()` already wrap `RWiener`/`rtdists`)
-  rather than reimplementing them from scratch.
+  for performance. `cogzoo`'s `alcove()` and `sustain()` are therefore thin wrappers
+  around `catlearn`'s validated `slpALCOVE()`/`slpSUSTAIN()` (a Suggested
+  dependency, the way `ddm()`/`lba()` wrap `RWiener`/`rtdists`) rather than
+  reimplementations: `cogzoo` adds only the shared `cm_*` interface.
 - **[cognitivemodels](https://github.com/JanaJarecki/cognitivemodels)**
   (Jarecki & Seitz) is the closest prior art in spirit — an `lm()`-style
   formula interface over a common cognitive-model superclass, with a
@@ -96,6 +96,8 @@ Generalized Context Model to Nosofsky (1989) data.
 | Model | Domain | `cm_fit`? | Notes |
 |---|---|---|---|
 | `gcm()` | categorization | default (MLE) | Exemplar similarity → category choice probability. |
+| `alcove()` | categorization | default (MLE, needs Suggested `catlearn`) | Kruschke's exemplar-based connectionist category learner with learned attention; thin wrapper over `catlearn::slpALCOVE()`. Takes a trial sequence, resets between subjects. |
+| `sustain()` | categorization | default (MLE, needs Suggested `catlearn`) | Love, Medin & Gureckis's adaptive clustering model; thin wrapper over `catlearn::slpSUSTAIN()` (supervised learning only). |
 | `prototype()` | categorization | default (MLE) | Same similarity/choice rule as `gcm()`, but compares to one stored prototype per category instead of every exemplar. |
 | `ebrw()` | decision-making | custom (weighted SSE) | GCM + random-walk choice/RT; fit criterion isn't a likelihood, so it overrides `cm_fit`. |
 | `ebddm()` | decision-making | default (MLE, needs Suggested `RWiener`) | GCM-driven drift for a Wiener diffusion process. |
@@ -131,8 +133,9 @@ by `validate_cogdata()`.
   [ajwills72/sixproblems](https://github.com/ajwills72/sixproblems). This
   is the standard benchmark for comparing categorization models on learning
   *difficulty* (the classic Type I < II < III,IV,V < VI ordering), so it
-  pairs naturally with `gcm()`/`prototype()` now and with `alcove()`/
-  `sustain()` once those land.
+  pairs naturally with `gcm()`/`prototype()` and with the learning models
+  `alcove()`/`sustain()` (the `lewandowsky2011_shj` coordinates and
+  feedback can be fed to both directly).
 
 None of these datasets carry an explicit license from their original
 source; each sidecar documents exactly how the data was obtained (who
@@ -150,6 +153,6 @@ check, for models; schema validation for data).
 ## Status
 
 Early but functional: the interface, registry, data-schema validator, and
-thirteen models across categorization, decision-making, memory, and learning
+fifteen models across categorization, decision-making, memory, and learning
 are in place and tested (`devtools::check()` is clean). Actively growing —
 see [`CONTRIBUTING.md`](CONTRIBUTING.md) to add a model or dataset.
