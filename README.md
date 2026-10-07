@@ -106,6 +106,7 @@ Generalized Context Model to Nosofsky (1989) data.
 | `rescorla_wagner()` | learning | default (MLE) | Error-correction associative learning (blocking, overshadowing); deterministic given a trial sequence. |
 | `q_learning()` | learning | default (MLE) | Delta-rule value learning with softmax choice, for repeated-choice/bandit tasks. |
 | `cr_mpt()` | memory | default (MLE) | Conjoint recognition verbatim/gist/guessing tree, pooled aggregate-count form. |
+| `gcm_recognition()` | memory | default (MLE; needs a few restarts) | GCM for old/new recognition (summed similarity → familiarity); reproduces Shin & Nosofsky's (1992) published Exp. 1 estimates on the bundled data. |
 | `sdt()` | memory | default (MLE) | Equal-variance Gaussian signal detection: the baseline for any old/new recognition judgment. |
 
 Run `list_models()` for the live registry (domain, task types, citation).
@@ -149,6 +150,6 @@ check, for models; schema validation for data).
 ## Status
 
 Early but functional: the interface, registry, data-schema validator, and
-twelve models across categorization, decision-making, memory, and learning
+thirteen models across categorization, decision-making, memory, and learning
 are in place and tested (`devtools::check()` is clean). Actively growing —
 see [`CONTRIBUTING.md`](CONTRIBUTING.md) to add a model or dataset.
