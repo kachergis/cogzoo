@@ -9,11 +9,20 @@
 \usage{
 sustain(r = 9, beta = 1.25, d = 16, eta = 0.09, ties = "first")
 
-\method{cm_predict}{sustain}(model, x, category, subject = NULL, dims = NULL, ...)
+\method{cm_predict}{sustain}(model, x, category, subject = NULL, dims = NULL, cores = 1, ...)
 
-\method{cm_loglik}{sustain}(model, data, x, category, subject = NULL, dims = NULL, ...)
+\method{cm_loglik}{sustain}(
+  model,
+  data,
+  x,
+  category,
+  subject = NULL,
+  dims = NULL,
+  cores = 1,
+  ...
+)
 
-\method{cm_simulate}{sustain}(model, x, category, subject = NULL, dims = NULL, ...)
+\method{cm_simulate}{sustain}(model, x, category, subject = NULL, dims = NULL, cores = 1, ...)
 }
 \arguments{
 \item{r}{Attentional focus; >= 0.}
@@ -35,6 +44,8 @@ sustain(r = 9, beta = 1.25, d = 16, eta = 0.09, ties = "first")
 \item{subject}{Optional vector marking independent learners (e.g. a subject ID, sorted so each learner's trials are contiguous): the network resets whenever it changes. If \code{NULL}, \code{x} is a single learner's sequence.}
 
 \item{dims}{Optional integer vector giving the number of levels of each stimulus dimension; defaults to the largest level seen in each column of \code{x}.}
+
+\item{cores}{Number of worker processes for running independent learners in parallel (via \code{\link[parallel:mclapply]{parallel::mclapply()}}, so Unix-alikes only). \code{catlearn::slpSUSTAIN()} is pure R and costs about 0.2 ms per trial, so fitting to many learners with \code{cm_fit()} is slow (minutes) at \code{cores = 1}; learners are independent after a reset, so this scales close to linearly. Results are identical to \code{cores = 1} except that, with \code{ties = "random"}, random tie-breaking is no longer reproducible from a single \code{set.seed()}.}
 
 \item{...}{Unused.}
 

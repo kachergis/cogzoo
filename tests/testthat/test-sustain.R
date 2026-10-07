@@ -49,3 +49,16 @@ test_that("sustain's likelihood favors the generating parameters and bars invali
   expect_gt(ll(true_model), ll(sustain(r = 1, beta = 5, d = 1, eta = 0.5)))
   expect_equal(ll(sustain(r = -1)), -Inf)
 })
+
+test_that("sustain gives identical results in parallel and serial", {
+  skip_if_not_installed("catlearn")
+  skip_on_os("windows")  # mclapply can't fork there
+  s <- shj_sequence(6, n_subj = 6, n_blocks = 4)
+  serial <- cm_predict(sustain(), s$x + 1, s$category, subject = s$subject, cores = 1)
+  parallel <- cm_predict(sustain(), s$x + 1, s$category, subject = s$subject, cores = 2)
+  expect_equal(parallel, serial)
+
+  data <- data.frame(response = s$category)
+  ll <- function(cores) cm_loglik(sustain(), data, x = s$x + 1, category = s$category, subject = s$subject, cores = cores)
+  expect_equal(ll(2), ll(1))
+})
